@@ -1,14 +1,23 @@
 services:
-  mc:
+  mcsurvival:
     image: itzg/minecraft-server
     environment:
       EULA: "true"
     ports:
       - "25565:25565"
     volumes:
-      - data:/data
+      - ./docker-minecraft-server:/data
     stdin_open: true
     tty: true
     restart: unless-stopped
-volumes:
-  data: {}
+  mccreative:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "true"
+    ports:
+      - "25566:25565"
+    volumes:
+      - ./docker-minecraft-creative:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
